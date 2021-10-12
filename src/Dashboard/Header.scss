@@ -1,0 +1,21 @@
+
+.header {
+  color: white;
+  padding: 0 8vw 0vw 3vw;
+  background: #F88A12 0 0 no-repeat padding-box;
+  display: flex;
+  justify-content: space-between;
+  a{
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  .heading, .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .icons {
+    width: 7vw;
+  }
+}
