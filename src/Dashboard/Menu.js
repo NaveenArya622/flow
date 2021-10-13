@@ -98,7 +98,7 @@ const Menu = ({history}) => {
                         <li key={4}>
                             <Card history={history}
                                   id={4}
-                                  name = "/dashboard/items/vegetable">
+                                  name = "/dashboard/items/1">
                                 <div className={`card-text item${4}`}>
                                     <p>Total Items</p>
                                     <h1>{cards.totalItems}</h1>
@@ -106,7 +106,7 @@ const Menu = ({history}) => {
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
                                     type="button"
-                                    name = "/dashboard/list/items"
+                                    name = "/dashboard/items/1"
                                     onClick={onClickHandler}
                                 >View Details</Action>
                             </Card>

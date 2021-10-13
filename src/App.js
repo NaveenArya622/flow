@@ -20,7 +20,7 @@ const App = () =>{
           <Route path={"/dashboard/users/:name"} component={Users}/>
           <Route path={"/dashboard/orders/:name"} component={Orders}/>
           <Route path={"/dashboard/order/:name"} component={Order}/>
-          <Route path={"/dashboard/list/:name"} component={Items}/>
+          <Route path={"/dashboard/items/:name"} component={Items}/>
           <Route path={"/dashboard/users/:name/:id"} component={Dialog}/>
           <Route path={"/dashboard/Unassigned"} component={Unassigned} exact/>
       </Router>

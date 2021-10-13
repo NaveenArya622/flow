@@ -13,10 +13,11 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import DateRangeInput from "../FormIcon/DateRangeInput";
 
+
 const apis = {
     "ongoing": {api:"/api/store-manager/dashboard/order/",
         type: "active",
-        columns: ["S.No.", "Order Id", "Delivery Address", "Date & Time", "Contact", "Action"]},
+        columns: ["Order Id", "Delivery Address","Contact", "Order Type / Order Mode", "Date & Time", "Items",]},
     "past": {api:"/api/store-manager/dashboard/order/",
         type: "history",
         columns: ["S.No.", "Order Id", "Delivery Address", "Contact", "Order Type", "Delivery Time"]},
@@ -44,20 +45,18 @@ const Orders = ({history}) => {
                 border: "none",
                 color: "gray"}}
                     onClick={()=>{history.goBack()}}>Back</Action>
-            <DateRangeInput/>
-            <DateRangePicker showOneCalendar />
         </div>
         <TabBar history={history} name={name} to={"/dashboard/orders/"}>
-            <Tab sx={{textTransform: "none", maxWidth: "2000px", width: "50%", border: 1, borderRadius: "10px 0 0 0"}}
+            <Tab sx={{textTransform: "capitalize", maxWidth: "2000px", width: "50%", border: 1, borderRadius: "10px 0 0 0"}}
                  value="ongoing" label="Ongoing Orders" />
-            <Tab sx={{textTransform: "none", maxWidth: "2000px", width: "50%", border: 1, borderRadius: "0 10px 0 0"}}
+            <Tab sx={{textTransform: "capitalize", maxWidth: "2000px", width: "50%", border: 1, borderRadius: "0 10px 0 0"}}
                  value="past" label="Past Orders" />
         </TabBar>
         <BaseTable>
             <TableHead sx={{border: "1px solid gray", background: "#FFF0DF"}}>
                 <TableRow>{
                     apiData.columns.map((item, index) => {
-                        return <TableCell sx={{border: "1px solid gray"}} key={`column_${index}`}
+                        return <TableCell sx={{textTransform: "capitalize", border: "1px solid gray"}} key={`${name}_${index}`}
                                           align={"center"}>{item}</TableCell>
                     })
                 }
@@ -68,7 +67,7 @@ const Orders = ({history}) => {
                     <TableRow
                         key={`row_${index}`}>{
                         apiData.columns.map((item, itemIndex) => {
-                            return (<TableCell sx={{border: "1px solid gray"}} key={`${index}_${itemIndex}`}
+                            return (<TableCell sx={{textTransform: "capitalize", border: "1px solid gray"}} key={`${name}${index}_${itemIndex}`}
                                                align={"center"}>{
                                 items[item]
                             }</TableCell>)

@@ -49,17 +49,34 @@ export const getOrderData = (to, type="",id="") =>(
                     "Scheduled For": dateFormat(item.scheduledFor,"h:MM tt, dd/mm/yyyy"),
                     "Contact": item.userPhone ,
                 })))
+            case "item":
+                return data.map((item, index)=>({
+                    "S.No": item.id,
+                    categoryID: item.categoryID,
+                    "Image": item.itemImageLinks[0],
+                    "name": item.name,
+                    "Bese Qty.": item.baseQuantity,
+                    "Price (per Base Qty.)": `Rs.${item.price}`,
+                    "In Stock": item.inStock,
+                }))
             case "unassigned":
                 return data;
-            case "ongoing":
-                return data;
+            case "active":
+                return data.map((item,index)=>({
+                    "Order Id": item.orderID,
+                    "Delivery Address": item.userAddress,
+                    "Contact": item.userPhone,
+                    "Order Type / Order Mode": `${item.orderType}/${item.orderMode}`,
+                    "Date & Time": dateFormat(item.deliveryTime,"h:MM tt, dd/mm/yyyy"),
+                    "Items": item.items.map(a=>a.name).join(","),
+                }));
             default:
                 return (data);
         }
-
-
-
     }))
+
+
+
 
 export const getUserData = (to, type="",id="") =>(
     axios.get(`${baseurl}${to}${type}${id}`,{

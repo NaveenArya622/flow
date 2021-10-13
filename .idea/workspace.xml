@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="75458a20-7b4d-4598-87e1-7db276a216e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Items/item.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dashboard/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/serverData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/serverData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Items.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Orders/Orders.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="1yXGDiqx2ml5sqRwImm9igdAeXf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ultimate-react-icecream-00-boilerplate" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/FormIcon" />
+      <recent name="$PROJECT_DIR$/src/Login" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/ProjectImage" />
+      <recent name="$PROJECT_DIR$/src/Structure" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.TabBar.js">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="TabBar.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/FormIcon/TabBar.js" working-dir="$PROJECT_DIR$/src/FormIcon">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.TabBar.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="75458a20-7b4d-4598-87e1-7db276a216e2" name="Changes" comment="" />
+      <created>1632390401622</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632390401622</updated>
+      <workItem from="1632390403327" duration="14391000" />
+      <workItem from="1632723666331" duration="28861000" />
+      <workItem from="1632809572168" duration="51717000" />
+      <workItem from="1632916233810" duration="13804000" />
+      <workItem from="1632982559821" duration="33863000" />
+      <workItem from="1633057816089" duration="1247000" />
+      <workItem from="1633070016600" duration="137000" />
+      <workItem from="1633070195331" duration="15586000" />
+      <workItem from="1633086133756" duration="13529000" />
+      <workItem from="1633222451934" duration="3395000" />
+      <workItem from="1633225886637" duration="180000" />
+      <workItem from="1633228225434" duration="3380000" />
+      <workItem from="1633250574049" duration="5443000" />
+      <workItem from="1633268601594" duration="4508000" />
+      <workItem from="1633307287993" duration="3034000" />
+      <workItem from="1633415011425" duration="32985000" />
+      <workItem from="1633500771995" duration="18566000" />
+      <workItem from="1633520226260" duration="15288000" />
+      <workItem from="1633587716997" duration="28577000" />
+      <workItem from="1633620722768" duration="2134000" />
+      <workItem from="1633662648141" duration="1183000" />
+      <workItem from="1633663867610" duration="101000" />
+      <workItem from="1633673675309" duration="25000000" />
+      <workItem from="1633779766236" duration="18018000" />
+      <workItem from="1633830182874" duration="3961000" />
+      <workItem from="1633932933757" duration="35622000" />
+      <workItem from="1634003646221" duration="2477000" />
+      <workItem from="1634019395108" duration="8060000" />
+      <workItem from="1634033161690" duration="1327000" />
+      <workItem from="1634034564746" duration="13147000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/FormIcon/DialogBox.js</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
