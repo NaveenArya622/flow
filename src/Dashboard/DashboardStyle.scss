@@ -47,6 +47,7 @@ body{
       margin: 1.5vw 1.6vw;
       background: #FFFFFF 0 0 no-repeat padding-box;
       border-radius: 10px;
+      overflow: hidden;
 
       p, h1 {
         margin: 0;
@@ -61,9 +62,9 @@ body{
       }
 
       .card-text {
-        margin: 14px 1px;
+        margin: 14px 1px 0;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         flex-direction: column;
       }
@@ -108,7 +109,7 @@ body{
 .chart{
   margin: 20px 0;
   width: 81.5vw;
-  height: 758px;
+  height: 760px;
   padding: 0 1.8vw 30px 0;
   background: #FFFFFF 0 0 no-repeat padding-box;
   border: 1px solid #000000;

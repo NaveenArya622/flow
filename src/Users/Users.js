@@ -105,16 +105,6 @@ const Users = ({history}) => {
                         onClick={() => {
                             history.goBack();
                         }}>Back</Action>
-                {name !== "users" && <Action styles={{
-                    width: "fit-content",
-                    background: "#ffffff",
-                    border: "none",
-                    color: "#F88A12"
-                }}
-                                             onClick={() => {
-                                                 history.replace("/dashboard")
-                                             }}>+ Add
-                    new {name.split("-").join(" ") === 'cart boy' ? 'Cart Person' : name.split("-").join(" ")}</Action>}
             </div>
             <TabBar history={history} name={name} to={"/dashboard/users/"}>
                 <Tab sx={{
@@ -201,6 +191,11 @@ const Users = ({history}) => {
                                                            key={`${index}_${itemIndex}`} align={"center"}>{
                                             items[item]
                                         }</TableCell>)
+                                    case "Primary Location":
+                                        return (<TableCell sx={{border: "1px solid gray", color: "#4612F8"}}
+                                                           key={`${index}_${itemIndex}`} align={"center"}>
+                                            <a target="newTab" href={`https://www.google.com/maps/search/?q=${items.lat}${items.long}`}>{items[item]}</a>
+                                        </TableCell>)
                                     case "Total Business":
                                         return (<TableCell sx={{border: "1px solid gray", color: "#21F812"}}
                                                            key={`${index}_${itemIndex}`} align={"center"}>Rs{

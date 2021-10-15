@@ -14,7 +14,7 @@ const theme = createTheme({
 const TabBar = ({children, history, name,to=""}) => {
 
     const handleChange = useCallback((event, newValue) => {
-        history.replace(`${to}${newValue}`);
+        history.push(`${to}${newValue}`);
     }, [history,to]);
     return (
         <ThemeProvider theme={theme}>

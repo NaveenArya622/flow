@@ -1,15 +1,16 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useCallback, useMemo, useState} from "react";
 import Action from "../FormIcon/Action";
 import TabBar from "../FormIcon/TabBar";
 import Tab from "@mui/material/Tab";
 import "../Users/User.scss"
 import {useParams} from "react-router";
-import {getOrderData} from "../Data/serverData";
+import {getOrderData, deleteOrder} from "../Data/serverData";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import BaseTable from "../FormIcon/BaseTable";
+import {Checkbox} from "@mui/material";
 
 const apis = {
     "disputed": {api:"/api/store-manager/dashboard/order/",
@@ -20,7 +21,7 @@ const apis = {
         columns: ["S.No.", "Order Id", "Delivery Address", "Contact", "Order Type", "Delivery Time"]},
     "scheduled": {api:"/api/store-manager/scheduled/orders",
         type: "",
-        columns: ["S.No.", "Order Id", "Delivery Address", "Scheduled On", "Scheduled For", "Contact", "Action"]},
+        columns: ["Order Id", "Delivery Address", "Date & Time", "Mode", "Amount", "Items", "Action"]},
 }
 
 const Order = ({history}) => {
@@ -37,6 +38,24 @@ const Order = ({history}) => {
             setTableData([]);
         }
     }, [apiData]);
+    const onClickHandler = useCallback(
+        async (event, type = "") => {
+            switch (type) {
+                case "Action": {
+                    await deleteOrder("/api/store-manager/cancel/scheduled/order/",
+                        event.target.name)
+                   await getOrderData(apiData.api, apiData.type).then(data => {
+                        setTableData(data);
+                    })
+                    break;
+                }
+                case "Order Id":
+                    history.push(`disputed/${event.target.name}`);
+                    break;
+                default:
+            }
+        }
+        , [apiData,history])
     return(
         <div className={"details"}>
             <div className={"details-head"}>
@@ -69,11 +88,48 @@ const Order = ({history}) => {
                         <TableRow
                             key={`row_${index}`}>{
                             apiData.columns.map((item, itemIndex) => {
+                                switch (item) {
+                                    case "Order Id":
+                                        return (apiData.type==="disputed"?
+                                            <TableCell sx={{border: "1px solid gray"}} key={`${index}_${itemIndex}`}
+                                                           align={"center"}>
+                                                <Action name={items["Order Id"]}
+                                                        style={{background: "#fff", color: "#000"}}
+                                                        onClick={(event)=>onClickHandler(event, item)}>
+                                                {items[item]}</Action>
+                                            </TableCell>:
+                                            <TableCell sx={{border: "1px solid gray"}} key={`${index}_${itemIndex}`}
+                                                       align={"center"}>{
+                                                items[item]
+                                            }</TableCell>)
+                                    case "Delivery Address":
+                                        return (<TableCell sx={{border: "1px solid gray", width: 330}} key={`${index}_${itemIndex}`}
+                                                           align={"center"}>
+                                                {apiData.type===""?
+                                            <a target="newTab" href={`https://www.google.com/maps/search/?q=${items.lat}${items.long}`}>{items[item]}</a>
+                                            :items[item]}
+                                        </TableCell>)
+                                    case "Action":
+                                        return (apiData.type===""?
+                                                <TableCell sx={{border: "1px solid gray"}} key={`${index}_${itemIndex}`}
+                                                           align={"center"}>{
+                                                <Action name={items["Order Id"]}
+                                                        onClick={(event)=>onClickHandler(event, item)}>Cancel</Action>
+                                        }</TableCell>:
+                                            <TableCell sx={{border: "1px solid gray"}} key={`${index}_${itemIndex}`}
+                                                                 align={"center"}>{
+
+                                            <Checkbox style={{margin: 0, color: "#21F812"}}
+                                                      disabled={true}
+                                                      checked={items[item] ? true : false}
+                                                      color="success"/>
+                                            }Resolved</TableCell>)
+                                    default:
                                         return (<TableCell sx={{border: "1px solid gray"}} key={`${index}_${itemIndex}`}
                                                            align={"center"}>{
                                             items[item]
                                         }</TableCell>)
-
+                                }
                             })
                         }
                         </TableRow>

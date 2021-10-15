@@ -1,6 +1,6 @@
 import axios from "axios";
 import dateFormat from "dateformat";
-const baseurl = "https://dev-api.yourdaily.co.in";
+const baseurl = "http://yd-dev-elb-841236067.ap-south-1.elb.amazonaws.com";
 
 const token = JSON.parse(localStorage.getItem("Token"));
 
@@ -11,8 +11,12 @@ export const getDashboardData = (to, days="") =>(
         }
     }).then(res=>res.data))
 
-
-
+export const getOrderDetails = (to, type="",id="") =>(
+    axios.get(`${baseurl}${to}${type}${id}`,{
+        headers: {
+            Authorization: token.Authorization,
+        }
+    }).then(({data})=>data))
 
 
 export const getOrderData = (to, type="",id="") =>(
@@ -29,7 +33,7 @@ export const getOrderData = (to, type="",id="") =>(
                     "Delivery Address": item.userAddress,
                     "Date & Time": dateFormat(item.disputedAt,"h:MM tt, dd/mm/yyyy"),
                     "Contact": item.userPhone ,
-                    "Action": item.resolvedAt?dateFormat(item.resolvedAt,"h:MM tt, dd/mm/yyyy"):null,
+                    "Action": item.resolvedAt?true:false,
                 })))
             case "denied":
                 return (data.map((item,index) =>({
@@ -42,12 +46,16 @@ export const getOrderData = (to, type="",id="") =>(
                 })))
             case "":
                 return (data.map((item, index)=>({
-                    "S.No.": index+1,
-                    "Order Id": item.orderId,
-                    "Delivery Address": item.userAddress,
-                    "Scheduled On": dateFormat(item.scheduledOn,"h:MM tt, dd/mm/yyyy"),
-                    "Scheduled For": dateFormat(item.scheduledFor,"h:MM tt, dd/mm/yyyy"),
-                    "Contact": item.userPhone ,
+                    "Order Id": item.id,
+                    "Delivery Address": item.address.addressData,
+                    lat: item.address.latitude,
+                    long: item.address.longitude,
+                    "Date & Time": `Start Date${dateFormat(item.startDate,": mmm dd,yyyy")}, Delivery Time${dateFormat(item.deliveryTime,": h:MM tt,")} 
+                    ${item.weekdays.join(",")}`,
+                    "Mode": item.mode,
+                    "Amount": item.amount,
+                    "Items": item.items.map(a=>`${a.name}-${a.quantity} x ${a.baseQuantity}`).join(","),
+                    Action: "",
                 })))
             case "item":
                 return data.map((item, index)=>({
@@ -56,11 +64,18 @@ export const getOrderData = (to, type="",id="") =>(
                     "Image": item.itemImageLinks[0],
                     "name": item.name,
                     "Bese Qty.": item.baseQuantity,
-                    "Price (per Base Qty.)": `Rs.${item.price}`,
+                    "Price (per Base Qty.)": item.price,
                     "In Stock": item.inStock,
                 }))
             case "unassigned":
-                return data;
+                return data.map((item, index)=>({
+                    "S.No": index+1,
+                    "Order Id": item.orderId,
+                    "Customer Address": item.addressData,
+                    "Contact": item.userPhone,
+                    "Order Type": item.orderType,
+                    "Status": item.status
+                }));
             case "active":
                 return data.map((item,index)=>({
                     "Order Id": item.orderID,
@@ -68,7 +83,7 @@ export const getOrderData = (to, type="",id="") =>(
                     "Contact": item.userPhone,
                     "Order Type / Order Mode": `${item.orderType}/${item.orderMode}`,
                     "Date & Time": dateFormat(item.deliveryTime,"h:MM tt, dd/mm/yyyy"),
-                    "Items": item.items.map(a=>a.name).join(","),
+                    "Items": item.items.map(a=>`${a.name}-${a.quantity} x ${a.baseQuantity}`).join(","),
                 }));
             default:
                 return (data);
@@ -91,6 +106,8 @@ export const getUserData = (to, type="",id="") =>(
                 "Contact": item.contact,
                 "Registration Date": dateFormat(item.regDate,"dd/mm/yyyy"),
                 "Primary Location":  item.defaultAddress,
+                lat: item.defaultAddressLat,
+                long: item.defaultAddressLong,
                 "Top Three Items": item.topThreeItems.length===0?["","",""]:
                     item.topThreeItems.length===1?[...item.topThreeItems,"",""]:
                         item.topThreeItems.length===1?[...item.topThreeItems,""]:
@@ -154,3 +171,12 @@ export const login = (data) =>(
             })
         }
     }))
+
+
+export const deleteOrder = (to,key) =>
+    (axios.delete(`${baseurl}${to}${key}`,{
+        headers: {
+            Authorization: token.Authorization,
+        }
+    }).then((res)=>res))
+

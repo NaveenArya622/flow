@@ -1,9 +1,10 @@
 import React, {useEffect, useMemo, useState} from "react";
 import Action from "../FormIcon/Action";
+import DateRangePeaker from "../FormIcon/DateRangePeaker";
 import TabBar from "../FormIcon/TabBar";
 import Tab from "@mui/material/Tab";
-import "../Users/User.scss"
-import DateRangePicker from 'rsuite/DateRangePicker';
+import "../Users/User.scss";
+import "./Order.scss";
 import {useParams} from "react-router";
 import {getOrderData} from "../Data/serverData";
 import BaseTable from "../FormIcon/BaseTable";
@@ -11,7 +12,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
-import DateRangeInput from "../FormIcon/DateRangeInput";
 
 
 const apis = {
@@ -45,6 +45,7 @@ const Orders = ({history}) => {
                 border: "none",
                 color: "gray"}}
                     onClick={()=>{history.goBack()}}>Back</Action>
+            {apiData.type==="history"&&<DateRangePeaker/>}
         </div>
         <TabBar history={history} name={name} to={"/dashboard/orders/"}>
             <Tab sx={{textTransform: "capitalize", maxWidth: "2000px", width: "50%", border: 1, borderRadius: "10px 0 0 0"}}
@@ -67,10 +68,18 @@ const Orders = ({history}) => {
                     <TableRow
                         key={`row_${index}`}>{
                         apiData.columns.map((item, itemIndex) => {
-                            return (<TableCell sx={{textTransform: "capitalize", border: "1px solid gray"}} key={`${name}${index}_${itemIndex}`}
-                                               align={"center"}>{
-                                items[item]
-                            }</TableCell>)
+                            switch (item) {
+                                case "Date & Time":
+                                    return (<TableCell sx={{border: "1px solid gray"}} key={`${name}${index}_${itemIndex}`}
+                                                       align={"center"}>{
+                                        items[item]
+                                    }</TableCell>)
+                                default:
+                                    return (<TableCell sx={{ border: "1px solid gray"}} key={`${name}${index}_${itemIndex}`}
+                                                       align={"center"}>{
+                                        items[item]
+                                    }</TableCell>)
+                            }
 
                         })
                     }

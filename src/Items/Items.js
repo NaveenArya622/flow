@@ -25,11 +25,9 @@ const Items = ({history}) => {
     const [tableData, setTableData] = useState([]);
     useEffect(() => {
         getOrderData(apiData.api,"category").then(data => {
-            console.log(data)
             setTabData(data);
         })
         getOrderData(apiData.api,apiData.type).then(data => {
-            console.log(data)
             setTableData(data);
         })
         return ()=>{
@@ -43,7 +41,7 @@ const Items = ({history}) => {
         await getOrderData(apiData.api, apiData.type).then(data => {
             setTableData(data);
         })
-    }, [apiData])
+    }, [name])
     return(
         <div className={"details"}>
             <div className={"details-head"}>
@@ -62,14 +60,14 @@ const Items = ({history}) => {
                 {
                     tabData.map((tab,index)=>{
                         if(tabData.length===1){
-                            return <Tab key={`cat_${index}`} sx={{textTransform: "none",
+                            return <Tab key={`cat_${index}`} sx={{
                                 textTransform: "capitalize", maxWidth: "2000px",
                                 width: `${100/tabData.length}%`, border: 1,
                                 borderRadius: "10px 10px 0 0"}}
                                  value={tab.id} label={tab.category} />
                         }
                         if(index===0){
-                            return <Tab key={`cat_${index}`} sx={{textTransform: "none",
+                            return <Tab key={`cat_${index}`} sx={{
                                 textTransform: "capitalize",
                                 maxWidth: "2000px",
                                 width: `${100/tabData.length}%`, border: 1,
@@ -77,14 +75,14 @@ const Items = ({history}) => {
                                         value={tab.id} label={tab.category} />
                         }
                         if(index===tabData.length-1){
-                            return <Tab key={`cat_${index}`} sx={{textTransform: "none",
+                            return <Tab key={`cat_${index}`} sx={{
                                 textTransform: "capitalize",
                                 maxWidth: "2000px",
                                 width: `${100/tabData.length}%`, border: 1,
                                 borderRadius: "0 10px 0 0"}}
                                         value={tab.id} label={tab.category} />
                         }
-                        return <Tab key={`cat_${index}`} sx={{textTransform: "none",
+                        return <Tab key={`cat_${index}`} sx={{
                             textTransform: "capitalize",
                             maxWidth: "2000px",
                             width: `${100/tabData.length}%`, border: 1,}}
@@ -133,13 +131,25 @@ const Items = ({history}) => {
                                             width: 500,
                                             color: "#F88A12",
                                             textTransform: "capitalize"}} key={`${index}_${itemIndex}`}
-                                                           align={"center"}>{
-                                            items[item]
-                                        }</TableCell>)
+                                                           align={"center"}>
+                                            <Action  style={{background: "#fff",
+                                                width: "100%",
+                                                height: "100%",
+                                                color: "#F88A12",
+                                                textTransform: "capitalize"}}
+                                            onClick={()=>{history.push(`1/${items["S.No"]}`)}}>
+                                                {items[item]}</Action>
+                                        </TableCell>)
                                     case "Bese Qty.":
                                         return (<TableCell sx={{border: "1px solid gray",}}
                                                            key={`${index}_${itemIndex}`}
                                                            align={"center"}>{
+                                            items[item]
+                                        }</TableCell>)
+                                    case "Price (per Base Qty.)":
+                                        return (<TableCell sx={{border: "1px solid gray",}}
+                                                           key={`${index}_${itemIndex}`}
+                                                           align={"center"}>Rs.{
                                             items[item]
                                         }</TableCell>)
                                     default:

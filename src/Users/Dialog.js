@@ -57,19 +57,17 @@ const Dialog = ({history}) => {
     }, [history])
     useEffect(() => {
         getUserData(apiData.api, apiData.type, `/${id}`).then(res => {
-            console.log(res)
             setDetails(res[0]);
         })
         return ()=>{
             setDetails(initial);
         }
     }, [apiData, id])
-    console.log(details)
     return (
         <DialogBox openDialog={true} onClose={onClose}>
             <div className={"dialog-form"}>
                 <figure className={"profile"}>
-                    <img src={details.Profile === "" ? "./Icon/profile.png" : details.Profile} alt={"Profile"}/>
+                    <img src={details.Profile === "" ? "/Icon/profile.png" : details.Profile} alt={"Profile"}/>
                 </figure>
                 <div className={"form-container"}>
                     <div className={"input"}>
@@ -86,8 +84,8 @@ const Dialog = ({history}) => {
                     </div>
                 </div>
             </div>
-            <hr className={"hr"}/>
-            <DialogContent sx={{padding: 1, maxWidth: 1440, border: "none", maxHeight: 786, height: "fit-content"}}
+            <hr id={"hr"}/>
+            <DialogContent sx={{padding: 1, maxWidth: 1440, border: "none", height: "fit-content"}}
                            dividers>{
                 apiData.type !== "" ? <div className={"cards"}>
                     <div className={"card"}>
@@ -117,7 +115,7 @@ const Dialog = ({history}) => {
                         <h1 className={"orange-data"}>{details.Canceled}</h1>
                         <p>Cancel</p>
                     </div>
-                </div> : <div className={"container"}>
+                </div> : <div className={"it-container"}>
                     <div className={"card-container"}>
                         <div className={"card"}>
                             <h1 className={"green-data"}>{details["Total Orders"]}</h1>
@@ -144,14 +142,17 @@ const Dialog = ({history}) => {
                         </div>
                     </div>
                     <div className={"list-container"}>
-                        <Grid item xs={12} md={6} sx={{margin: 1}}>
+                        <Grid item xs={12} md={6} sx={{margin: 1,
+                            border: "1px solid #707070",
+                            overflow: "hidden",
+                            height: "fit-content",
+                            borderRadius: "15px"}}>
                             <Typography sx={{
                                 textAlign: "center",
                                 mt: 0, mb: 0,
                                 padding: "5px 0",
                                 color: "#fff",
                                 background: "#F88A12 0% 0% no-repeat padding-box",
-                                borderRadius: "15px 15px 0px 0px"
                             }}
                                         variant="h6" component="div">
                                 Most Used Location
@@ -163,23 +164,10 @@ const Dialog = ({history}) => {
                                     boxShadow: "3px 3px 6px #00000029"}}>
                                     {
                                         details["Top Three Locations"].map((item, index) => {
-                                            if (index === details["Top Three Locations"].length-1) {
-                                                return (<ListItem sx={{
-                                                    border: "1px solid #707070",
-                                                    height: "fit-content",
-                                                    minHeight: "60px",
-                                                    borderTop: 0,
-                                                    borderRadius: "0 0 15px 15px",
-                                                }} key={`location${index}`}>
-                                            <ListItemText
-                                                primary={item}
-                                            />
-                                            </ListItem>)
-                                            }
                                             return (
-                                                <ListItem sx={{border: "1px solid #707070",
+                                                <ListItem sx={{
                                                     height: "fit-content",
-                                                    borderTop: 0,
+                                                    borderTop: "1px solid #707070",
                                                     minHeight: "60px",}} key={`location${index}`}>
                                                 <ListItemText
                                                     primary={item}
@@ -190,14 +178,17 @@ const Dialog = ({history}) => {
                                 </List>
                             </Demo>
                         </Grid>
-                        <Grid item xs={12} md={6} sx={{margin: 1, height: "100%"}}>
+                        <Grid item xs={12} md={6} sx={{margin: 1,
+                            overflow: "hidden",
+                            border: "1px solid #707070",
+                            height: "fit-content",
+                            borderRadius: "15px"}}>
                             <Typography sx={{
                                 textAlign: "center",
                                 mt: 0, mb: 0,
                                 padding: "5px 0",
                                 color: "#fff",
                                 background: "#F88A12 0% 0% no-repeat padding-box",
-                                borderRadius: "15px 15px 0px 0px",
                             }}
                                         variant="h6" component="div">
                                 Top Three Ordered Item
@@ -209,22 +200,9 @@ const Dialog = ({history}) => {
                                     boxShadow: "3px 3px 6px #00000029"}}>
                                     {
                                         details["Top Three Items"].map((item, index) => {
-                                            if (index === details["Top Three Items"].length-1) {
-                                                return (<ListItem sx={{
-                                                    border: "1px solid #707070",
-                                                    borderTop: 0,
-                                                    borderRadius: "0 0 15px 15px",
-                                                    height: "fit-content",
-                                                    minHeight: "60px",
-                                                }}key={`item${index}`}>
-                                                    <ListItemText
-                                                        primary={item}
-                                                    />
-                                                </ListItem>)
-                                            }
-                                            return (<ListItem sx={{border: "1px solid #707070",
+                                            return (<ListItem sx={{
                                                 height: "fit-content",
-                                                borderTop: 0,
+                                                borderTop: "1px solid #707070",
                                                 minHeight: "60px",}}
                                                 key={`item${index}`}>
                                                 <ListItemText

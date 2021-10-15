@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import Card from "./Card";
 import {getDashboardData} from "../Data/serverData";
 import Action from "../FormIcon/Action";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const initial = {
     activeUsers:"NA",
@@ -37,7 +39,10 @@ const Menu = ({history}) => {
                               name= "/dashboard/users/cart-boy">
                             <div className={`card-text item${0}`}>
                                 <p>Total Cart Person</p>
-                                <h1>{cards.cartBoyCount}</h1>
+                                <h1>{cards.cartBoyCount==="NA"?
+                                    <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                        <CircularProgress sx={{color: "#F88A12"}} />
+                                    </Box>:cards.cartBoyCount}</h1>
                             </div>
                             <Action
                                 styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -53,7 +58,10 @@ const Menu = ({history}) => {
                                   name="/dashboard/users/delivery-boy">
                                 <div className={`card-text item${1}`}>
                                     <p>Total Delivery Boy</p>
-                                    <h1>{cards.deliveryBoyCount}</h1>
+                                    <h1>{cards.deliveryBoyCount==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.deliveryBoyCount}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -69,7 +77,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/users/users">
                                 <div className={`card-text item${2}`}>
                                     <p>Total Users</p>
-                                    <h1>{cards.userCount}</h1>
+                                    <h1>{cards.userCount==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.userCount}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -85,7 +96,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/unassigned">
                                 <div className={`card-text item${3}`}>
                                     <p>Unassigned order</p>
-                                    <h1>{cards.unassignedOrders}</h1>
+                                    <h1>{cards.unassignedOrders==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.unassignedOrders}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -101,7 +115,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/items/1">
                                 <div className={`card-text item${4}`}>
                                     <p>Total Items</p>
-                                    <h1>{cards.totalItems}</h1>
+                                    <h1>{cards.totalItems==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.totalItems}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -116,7 +133,10 @@ const Menu = ({history}) => {
                                 <div className={`card-text item${5}`}>
                                     <p>Total Active Users</p>
                                     <p className={"hint"}>(Past 10 Days Order)</p>
-                                    <h1>{cards.activeUsers}</h1>
+                                    <h1>{cards.activeUsers==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.activeUsers}</h1>
                                 </div>
                             </Card>
                         </li>
@@ -126,7 +146,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/orders/ongoing">
                                 <div className={`card-text item${6}`}>
                                     <p>Total Ongoing Booking</p>
-                                    <h1>{cards.onGoingOrder}</h1>
+                                    <h1>{cards.onGoingOrder==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.onGoingOrder}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -142,7 +165,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/orders/past">
                                 <div className={`card-text item${7}`}>
                                     <p>Past Week Bookings</p>
-                                    <h1>{cards.bookingForLastWeek}</h1>
+                                    <h1>{cards.bookingForLastWeek==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.bookingForLastWeek}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -158,7 +184,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/order/disputed">
                                 <div className={`card-text item${8}`}>
                                     <p>Denied/Disputed order</p>
-                                    <h1>{`${cards.deniedOrder}/${cards.disputedOrder}`}</h1>
+                                    <h1>{`${cards.deniedOrder}/${cards.disputedOrder}`==="NA/NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:`${cards.deniedOrder}/${cards.disputedOrder}`}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}
@@ -174,7 +203,10 @@ const Menu = ({history}) => {
                                   name = "/dashboard/order/scheduled">
                                 <div className={`card-text item${9}`}>
                                     <p>Scheduled order</p>
-                                    <h1>{cards.scheduledOrder}</h1>
+                                    <h1>{cards.scheduledOrder==="NA"?
+                                        <Box sx={{ display: 'flex', marginTop: 3 }}>
+                                            <CircularProgress sx={{color: "#F88A12"}} />
+                                        </Box>:cards.scheduledOrder}</h1>
                                 </div>
                                 <Action
                                     styles={{borderRadius: '0 0 10px 10px', margin: 0}}

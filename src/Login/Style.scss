@@ -3,11 +3,12 @@ body{
   padding: 0;
 }
 .login {
-  height: 786px;
+  height: fit-content;
+  padding: 0 0 8rem 0;
   background: transparent linear-gradient(180deg, #FFECD7 0%, #FFC9C9 100%) 0 0 no-repeat padding-box;
 }
 
-.container{
+.logo-container{
   margin: 0;
   padding: 0;
   height: 10vw;
@@ -20,7 +21,7 @@ body{
   }
 
   .home {
-    margin: 0 0 8.5rem 10rem;
+    margin: 0 0 0 10rem;
     width: 50vw;
     height: 35vw;
     float: left;

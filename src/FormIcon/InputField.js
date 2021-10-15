@@ -3,14 +3,14 @@ import React from "react";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#000000",
+        },
+    }
+});
 const InputField = ({label,styles={},...props}) => {
-    const theme = createTheme({
-        palette: {
-            primary: {
-                main: "#000000",
-            },
-        }
-    });
     return (
         <ThemeProvider theme={theme}>
             <TextField

@@ -95,7 +95,7 @@ const LogIn = ({history}) => {
     }
 
     return (<main className={"login"}>
-        <div className={"container"}>
+        <div className={"logo-container"}>
             <img className={"logo"} src={"./ProjectImage/Logo.svg"} alt={"logo"}/>
         </div>
         <img className={"home"} src={"./ProjectImage/Illustrator 1.png"} alt={"view"}/>
